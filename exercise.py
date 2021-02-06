@@ -33,7 +33,7 @@ def macd(prices, window_short=13, window_long=26):
     
     return pd.concat([data, M], axis=1)
     
-    pass
+  
 
 
 def sortino_ratio(prices):
