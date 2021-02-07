@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
 from scipy import stats
-
+import matplotlib.pyplot as plt
+from math import *
 
 # Logic
 
@@ -11,7 +12,27 @@ def smallest_difference(array):
     # absolute difference between two elements of this array
     # Please note that the array can be large and that the more
     # computationally efficient the better
-    pass
+    
+    nb_lignes, nb_col =np.shape(array)[0], np.shape(array)[1]  #recupération du nombre de lignes et de colonnes du tableau
+    n=nb_lignes*nb_col        #nombre de valeurs totales
+    M=[]                      #liste vide où seront stockées les valeurs des différences
+    
+    
+    #i est le positionnement d'une valeur dans le tableau
+    for i in range(n):
+        l1 = floor(i/nb_col)   #indice ligne
+        c1 = i%nb_col          #indice colonne
+        
+        for j in range(i+1,n):   #j est le positionnement de l'autre valeur dans le tableau, décalé d'une valeur par rapport au tableau précédent
+            l2 = floor(j/nb_col)
+            c2 = j%nb_col
+            
+            d = abs(array[l1][c1]-array[l2][c2])   #valeur absolue de la différence
+            M.append(d)
+            
+        
+    return(min(M))
+
 
 # Finance and DataFrame manipulation
 
